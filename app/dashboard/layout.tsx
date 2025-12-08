@@ -1,4 +1,5 @@
 "use client";
+
 import { SignedIn } from "@clerk/clerk-react";
 import { ReactNode } from "react";
 import SideNav from "./_components/SideNav";
