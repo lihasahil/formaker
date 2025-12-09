@@ -1,4 +1,3 @@
-//createdorm.ts
 "use server";
 
 import prisma from "@/lib/prisma";
@@ -27,7 +26,6 @@ export async function createFormAction(data: CreateFormInput) {
 
     return res;
   } catch (error) {
-    console.error("Error creating form in database:", error);
     throw new Error(
       `Failed to save form: ${
         error instanceof Error ? error.message : "Unknown error"
