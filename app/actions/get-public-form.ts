@@ -2,13 +2,10 @@
 
 import prisma from "@/lib/prisma";
 
-export async function getFormByIdAction(formId: number, createdBy: string) {
+export async function getPublicFormByIdAction(formId: number) {
   try {
     if (!formId) {
       throw new Error("Form ID is required");
-    }
-    if (!createdBy) {
-      throw new Error("Unknown User");
     }
 
     const form = await prisma.jsonForm.findUnique({
@@ -27,11 +24,6 @@ export async function getFormByIdAction(formId: number, createdBy: string) {
       throw new Error("Form not found");
     }
 
-    // Verify user owns this form
-    if (form.createdBy !== createdBy) {
-      throw new Error("Unauthorized: You don't own this form");
-    }
-
     return form;
   } catch (error) {
     throw new Error(
@@ -42,6 +34,6 @@ export async function getFormByIdAction(formId: number, createdBy: string) {
   }
 }
 
-export async function getFormCaller(formId: number, userEmail: string) {
-  return await getFormByIdAction(formId, userEmail);
+export async function getPublicFormCaller(formId: number) {
+  return await getPublicFormByIdAction(formId);
 }

@@ -28,10 +28,12 @@ export type AggregateJsonForm = {
 
 export type JsonFormAvgAggregateOutputType = {
   id: number | null
+  borderWidth: number | null
 }
 
 export type JsonFormSumAggregateOutputType = {
   id: number | null
+  borderWidth: number | null
 }
 
 export type JsonFormMinAggregateOutputType = {
@@ -39,6 +41,8 @@ export type JsonFormMinAggregateOutputType = {
   jsonform: string | null
   createdBy: string | null
   createdAt: Date | null
+  background: string | null
+  borderWidth: number | null
 }
 
 export type JsonFormMaxAggregateOutputType = {
@@ -46,6 +50,8 @@ export type JsonFormMaxAggregateOutputType = {
   jsonform: string | null
   createdBy: string | null
   createdAt: Date | null
+  background: string | null
+  borderWidth: number | null
 }
 
 export type JsonFormCountAggregateOutputType = {
@@ -53,16 +59,20 @@ export type JsonFormCountAggregateOutputType = {
   jsonform: number
   createdBy: number
   createdAt: number
+  background: number
+  borderWidth: number
   _all: number
 }
 
 
 export type JsonFormAvgAggregateInputType = {
   id?: true
+  borderWidth?: true
 }
 
 export type JsonFormSumAggregateInputType = {
   id?: true
+  borderWidth?: true
 }
 
 export type JsonFormMinAggregateInputType = {
@@ -70,6 +80,8 @@ export type JsonFormMinAggregateInputType = {
   jsonform?: true
   createdBy?: true
   createdAt?: true
+  background?: true
+  borderWidth?: true
 }
 
 export type JsonFormMaxAggregateInputType = {
@@ -77,6 +89,8 @@ export type JsonFormMaxAggregateInputType = {
   jsonform?: true
   createdBy?: true
   createdAt?: true
+  background?: true
+  borderWidth?: true
 }
 
 export type JsonFormCountAggregateInputType = {
@@ -84,6 +98,8 @@ export type JsonFormCountAggregateInputType = {
   jsonform?: true
   createdBy?: true
   createdAt?: true
+  background?: true
+  borderWidth?: true
   _all?: true
 }
 
@@ -178,6 +194,8 @@ export type JsonFormGroupByOutputType = {
   jsonform: string
   createdBy: string
   createdAt: Date
+  background: string
+  borderWidth: number
   _count: JsonFormCountAggregateOutputType | null
   _avg: JsonFormAvgAggregateOutputType | null
   _sum: JsonFormSumAggregateOutputType | null
@@ -208,6 +226,8 @@ export type JsonFormWhereInput = {
   jsonform?: Prisma.StringFilter<"JsonForm"> | string
   createdBy?: Prisma.StringFilter<"JsonForm"> | string
   createdAt?: Prisma.DateTimeFilter<"JsonForm"> | Date | string
+  background?: Prisma.StringFilter<"JsonForm"> | string
+  borderWidth?: Prisma.IntFilter<"JsonForm"> | number
 }
 
 export type JsonFormOrderByWithRelationInput = {
@@ -215,6 +235,8 @@ export type JsonFormOrderByWithRelationInput = {
   jsonform?: Prisma.SortOrder
   createdBy?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  background?: Prisma.SortOrder
+  borderWidth?: Prisma.SortOrder
 }
 
 export type JsonFormWhereUniqueInput = Prisma.AtLeast<{
@@ -225,6 +247,8 @@ export type JsonFormWhereUniqueInput = Prisma.AtLeast<{
   jsonform?: Prisma.StringFilter<"JsonForm"> | string
   createdBy?: Prisma.StringFilter<"JsonForm"> | string
   createdAt?: Prisma.DateTimeFilter<"JsonForm"> | Date | string
+  background?: Prisma.StringFilter<"JsonForm"> | string
+  borderWidth?: Prisma.IntFilter<"JsonForm"> | number
 }, "id">
 
 export type JsonFormOrderByWithAggregationInput = {
@@ -232,6 +256,8 @@ export type JsonFormOrderByWithAggregationInput = {
   jsonform?: Prisma.SortOrder
   createdBy?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  background?: Prisma.SortOrder
+  borderWidth?: Prisma.SortOrder
   _count?: Prisma.JsonFormCountOrderByAggregateInput
   _avg?: Prisma.JsonFormAvgOrderByAggregateInput
   _max?: Prisma.JsonFormMaxOrderByAggregateInput
@@ -247,12 +273,16 @@ export type JsonFormScalarWhereWithAggregatesInput = {
   jsonform?: Prisma.StringWithAggregatesFilter<"JsonForm"> | string
   createdBy?: Prisma.StringWithAggregatesFilter<"JsonForm"> | string
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"JsonForm"> | Date | string
+  background?: Prisma.StringWithAggregatesFilter<"JsonForm"> | string
+  borderWidth?: Prisma.IntWithAggregatesFilter<"JsonForm"> | number
 }
 
 export type JsonFormCreateInput = {
   jsonform: string
   createdBy: string
   createdAt?: Date | string
+  background?: string
+  borderWidth?: number
 }
 
 export type JsonFormUncheckedCreateInput = {
@@ -260,12 +290,16 @@ export type JsonFormUncheckedCreateInput = {
   jsonform: string
   createdBy: string
   createdAt?: Date | string
+  background?: string
+  borderWidth?: number
 }
 
 export type JsonFormUpdateInput = {
   jsonform?: Prisma.StringFieldUpdateOperationsInput | string
   createdBy?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  background?: Prisma.StringFieldUpdateOperationsInput | string
+  borderWidth?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 export type JsonFormUncheckedUpdateInput = {
@@ -273,6 +307,8 @@ export type JsonFormUncheckedUpdateInput = {
   jsonform?: Prisma.StringFieldUpdateOperationsInput | string
   createdBy?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  background?: Prisma.StringFieldUpdateOperationsInput | string
+  borderWidth?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 export type JsonFormCreateManyInput = {
@@ -280,12 +316,16 @@ export type JsonFormCreateManyInput = {
   jsonform: string
   createdBy: string
   createdAt?: Date | string
+  background?: string
+  borderWidth?: number
 }
 
 export type JsonFormUpdateManyMutationInput = {
   jsonform?: Prisma.StringFieldUpdateOperationsInput | string
   createdBy?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  background?: Prisma.StringFieldUpdateOperationsInput | string
+  borderWidth?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 export type JsonFormUncheckedUpdateManyInput = {
@@ -293,6 +333,8 @@ export type JsonFormUncheckedUpdateManyInput = {
   jsonform?: Prisma.StringFieldUpdateOperationsInput | string
   createdBy?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  background?: Prisma.StringFieldUpdateOperationsInput | string
+  borderWidth?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 export type JsonFormCountOrderByAggregateInput = {
@@ -300,10 +342,13 @@ export type JsonFormCountOrderByAggregateInput = {
   jsonform?: Prisma.SortOrder
   createdBy?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  background?: Prisma.SortOrder
+  borderWidth?: Prisma.SortOrder
 }
 
 export type JsonFormAvgOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  borderWidth?: Prisma.SortOrder
 }
 
 export type JsonFormMaxOrderByAggregateInput = {
@@ -311,6 +356,8 @@ export type JsonFormMaxOrderByAggregateInput = {
   jsonform?: Prisma.SortOrder
   createdBy?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  background?: Prisma.SortOrder
+  borderWidth?: Prisma.SortOrder
 }
 
 export type JsonFormMinOrderByAggregateInput = {
@@ -318,10 +365,13 @@ export type JsonFormMinOrderByAggregateInput = {
   jsonform?: Prisma.SortOrder
   createdBy?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  background?: Prisma.SortOrder
+  borderWidth?: Prisma.SortOrder
 }
 
 export type JsonFormSumOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  borderWidth?: Prisma.SortOrder
 }
 
 export type StringFieldUpdateOperationsInput = {
@@ -347,6 +397,8 @@ export type JsonFormSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs
   jsonform?: boolean
   createdBy?: boolean
   createdAt?: boolean
+  background?: boolean
+  borderWidth?: boolean
 }, ExtArgs["result"]["jsonForm"]>
 
 export type JsonFormSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -354,6 +406,8 @@ export type JsonFormSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exte
   jsonform?: boolean
   createdBy?: boolean
   createdAt?: boolean
+  background?: boolean
+  borderWidth?: boolean
 }, ExtArgs["result"]["jsonForm"]>
 
 export type JsonFormSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -361,6 +415,8 @@ export type JsonFormSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exte
   jsonform?: boolean
   createdBy?: boolean
   createdAt?: boolean
+  background?: boolean
+  borderWidth?: boolean
 }, ExtArgs["result"]["jsonForm"]>
 
 export type JsonFormSelectScalar = {
@@ -368,9 +424,11 @@ export type JsonFormSelectScalar = {
   jsonform?: boolean
   createdBy?: boolean
   createdAt?: boolean
+  background?: boolean
+  borderWidth?: boolean
 }
 
-export type JsonFormOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "jsonform" | "createdBy" | "createdAt", ExtArgs["result"]["jsonForm"]>
+export type JsonFormOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "jsonform" | "createdBy" | "createdAt" | "background" | "borderWidth", ExtArgs["result"]["jsonForm"]>
 
 export type $JsonFormPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "JsonForm"
@@ -380,6 +438,8 @@ export type $JsonFormPayload<ExtArgs extends runtime.Types.Extensions.InternalAr
     jsonform: string
     createdBy: string
     createdAt: Date
+    background: string
+    borderWidth: number
   }, ExtArgs["result"]["jsonForm"]>
   composites: {}
 }
@@ -807,6 +867,8 @@ export interface JsonFormFieldRefs {
   readonly jsonform: Prisma.FieldRef<"JsonForm", 'String'>
   readonly createdBy: Prisma.FieldRef<"JsonForm", 'String'>
   readonly createdAt: Prisma.FieldRef<"JsonForm", 'DateTime'>
+  readonly background: Prisma.FieldRef<"JsonForm", 'String'>
+  readonly borderWidth: Prisma.FieldRef<"JsonForm", 'Int'>
 }
     
 

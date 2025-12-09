@@ -27,13 +27,13 @@ const buttonVariants = cva(
         link: "text-primary underline-offset-4 hover:underline",
 
         brutalUp:
-          "bg-yellow-300 text-black border-4 border-black rounded-none transition-all " +
+          "bg-yellow-300 text-black border-2 border-black rounded-none transition-all " +
           "shadow-[4px_4px_0_#000] " +
           "hover:shadow-[6px_6px_0_#000] hover:-translate-x-[2px] hover:-translate-y-[2px] " +
           "active:translate-x-[-2px] active:translate-y-[-2px] active:shadow-[8px_8px_0_#000]",
 
         brutalDown:
-          "bg-yellow-300 text-black border-4 border-black rounded-none transition-all " +
+          "bg-yellow-300 text-black border-2 border-black rounded-none transition-all " +
           "shadow-[4px_4px_0_#000] " +
           "hover:shadow-[2px_2px_0_#000] hover:-translate-x-[1px] hover:-translate-y-[1px] " +
           "active:translate-x-[2px] active:translate-y-[2px] active:shadow-none",

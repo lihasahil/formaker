@@ -521,7 +521,9 @@ export const JsonFormScalarFieldEnum = {
   id: 'id',
   jsonform: 'jsonform',
   createdBy: 'createdBy',
-  createdAt: 'createdAt'
+  createdAt: 'createdAt',
+  background: 'background',
+  borderWidth: 'borderWidth'
 } as const
 
 export type JsonFormScalarFieldEnum = (typeof JsonFormScalarFieldEnum)[keyof typeof JsonFormScalarFieldEnum]

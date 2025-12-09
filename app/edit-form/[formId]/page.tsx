@@ -45,6 +45,8 @@ export default function EditFormPage() {
           typeof jsonString === "string" ? JSON.parse(jsonString) : jsonString;
 
         setFormSchema(parsedJson);
+        setBorderWidth(res.borderWidth);
+        setSelectedGradient(res.background);
         toast.success("Form loaded!");
       } catch (error) {
         toast.error(
@@ -106,7 +108,8 @@ export default function EditFormPage() {
             setSelectedGradient={setSelectedGradient}
             borderWidth={borderWidth}
             setBorderWidth={setBorderWidth}
-            schema={formSchema}
+            formId={Number(formId)}
+            user={user?.primaryEmailAddress?.emailAddress || ""}
           />
         </Card>
 

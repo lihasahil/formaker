@@ -175,7 +175,7 @@ function FormUi({
 
   const renderField = (field: FormField) => {
     const baseClasses =
-      "w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500";
+      "w-full px-3 py-2 border border-gray-300 bg-white rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500";
 
     switch (field.type) {
       case "text":

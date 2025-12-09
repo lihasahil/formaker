@@ -1,21 +1,17 @@
 "use client";
 
-import React from "react";
-
-import { FormSchema } from "@/app/types/form-types";
+import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { toast } from "sonner";
+import { updateFormStyle } from "@/app/actions/updte-form-style";
 
 interface FormControllerProps {
-  schema?: FormSchema;
-  editable?: boolean;
-}
-
-interface FormControllerProps {
+  formId: number;
+  user: string;
   selectedGradient: string;
   setSelectedGradient: (val: string) => void;
   borderWidth: number;
   setBorderWidth: (val: number) => void;
-  schema?: FormSchema;
 }
 
 const gradients = [
@@ -36,11 +32,38 @@ const gradients = [
 const borders = [1, 2, 3, 4, 5];
 
 const FormController: React.FC<FormControllerProps> = ({
+  formId,
+  user,
   selectedGradient,
   setSelectedGradient,
   borderWidth,
   setBorderWidth,
 }) => {
+  const [loading, setLoading] = useState(false);
+
+  const handleApplyChanges = async () => {
+    setLoading(true);
+    try {
+      const res = await updateFormStyle({
+        id: formId,
+        background: selectedGradient,
+        borderWidth,
+        updatedBy: user,
+      });
+
+      if (res.success) {
+        toast.success("Form style updated successfully!");
+      } else {
+        toast.error(res.error || "Failed to update form style");
+      }
+    } catch (err) {
+      console.error(err);
+      toast.error("Something went wrong");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <div className="space-y-6">
       <h2 className="text-xl font-bold text-center">Form Style Controller</h2>
@@ -53,7 +76,7 @@ const FormController: React.FC<FormControllerProps> = ({
             <div
               key={idx}
               onClick={() => setSelectedGradient(grad)}
-              className={`w-20 h-12 rounded-md cursor-pointer border-black  ${
+              className={`w-20 h-12 rounded-md cursor-pointer border-black ${
                 selectedGradient === grad ? "border-4" : "border-2"
               }`}
               style={{ background: grad }}
@@ -81,6 +104,16 @@ const FormController: React.FC<FormControllerProps> = ({
           ))}
         </div>
       </div>
+
+      {/* Apply Changes Button */}
+      <Button
+        variant="brutalUp"
+        className="rounded-md bg-background hover:shadow-yellow-400"
+        onClick={handleApplyChanges}
+        disabled={loading}
+      >
+        {loading ? "Saving..." : "Apply Changes"}
+      </Button>
     </div>
   );
 };
