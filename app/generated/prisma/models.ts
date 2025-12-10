@@ -9,4 +9,5 @@
  * 🟢 You can import this file directly.
  */
 export type * from './models/JsonForm'
+export type * from './models/UserResponse'
 export type * from './commonInputTypes'

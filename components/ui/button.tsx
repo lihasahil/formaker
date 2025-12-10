@@ -5,7 +5,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 cursor-pointer  whitespace-nowrap text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:ring-ring/50 focus-visible:ring-[3px] focus-visible:border-ring aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive",
+  "inline-flex items-center justify-center gap-2 cursor-pointer rounded-md whitespace-nowrap text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:ring-ring/50 focus-visible:ring-[3px] focus-visible:border-ring aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive",
   {
     variants: {
       variant: {
@@ -27,13 +27,13 @@ const buttonVariants = cva(
         link: "text-primary underline-offset-4 hover:underline",
 
         brutalUp:
-          "bg-yellow-300 text-black border-2 border-black rounded-none transition-all " +
+          "bg-yellow-300 text-black border-2 border-black rounded-md transition-all " +
           "shadow-[4px_4px_0_#000] " +
           "hover:shadow-[6px_6px_0_#000] hover:-translate-x-[2px] hover:-translate-y-[2px] " +
           "active:translate-x-[-2px] active:translate-y-[-2px] active:shadow-[8px_8px_0_#000]",
 
         brutalDown:
-          "bg-yellow-300 text-black border-2 border-black rounded-none transition-all " +
+          "bg-yellow-300 text-black border-2 border-black rounded-md transition-all " +
           "shadow-[4px_4px_0_#000] " +
           "hover:shadow-[2px_2px_0_#000] hover:-translate-x-[1px] hover:-translate-y-[1px] " +
           "active:translate-x-[2px] active:translate-y-[2px] active:shadow-none",

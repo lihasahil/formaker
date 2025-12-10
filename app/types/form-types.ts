@@ -21,7 +21,9 @@ export interface FormField {
 }
 
 export interface FormSchema {
-  formTitle: string;
-  formSubtitle: string;
+  formTitle?: string;
+  title?: string;
+  formSubtitle?: string;
+  subtitle?: string;
   fields: FormField[];
 }

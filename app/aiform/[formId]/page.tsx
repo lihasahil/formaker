@@ -9,6 +9,7 @@ import { getPublicFormCaller } from "@/app/actions/get-public-form";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { createUserResponse } from "@/app/actions/submit-form-response";
 
 export default function LiveAiForm() {
   const params = useParams();
@@ -63,7 +64,7 @@ export default function LiveAiForm() {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     if (!formSchema) return;
@@ -77,10 +78,20 @@ export default function LiveAiForm() {
       return;
     }
 
-    toast.success("Form submitted successfully!");
+    try {
+      const response = await createUserResponse(formData, Number(formId));
 
-    localStorage.setItem(`form_${formId}`, JSON.stringify(formData));
-    router.push(`/`);
+      if (!response.success) {
+        toast.error(response.error || "Failed to submit form");
+        return;
+      }
+
+      toast.success("Form submitted successfully!");
+      router.push(`/`);
+    } catch (error) {
+      console.error("Submit error:", error);
+      toast.error("An unexpected error occurred. Please try again.");
+    }
   };
 
   const renderField = (field: any) => {
@@ -228,9 +239,11 @@ export default function LiveAiForm() {
             >
               <div className="mb-8 text-center">
                 <h1 className="text-3xl font-bold text-black mb-2">
-                  {formSchema.formTitle}
+                  {formSchema.formTitle ?? formSchema.title}
                 </h1>
-                <p className="text-gray-600">{formSchema.formSubtitle}</p>
+                <p className="text-gray-600">
+                  {formSchema.formSubtitle ?? formSchema.subtitle}
+                </p>
               </div>
 
               <form onSubmit={handleSubmit} className="space-y-6 w-full">

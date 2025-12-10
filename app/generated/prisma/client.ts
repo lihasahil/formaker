@@ -44,3 +44,8 @@ export { Prisma }
  * 
  */
 export type JsonForm = Prisma.JsonFormModel
+/**
+ * Model UserResponse
+ * 
+ */
+export type UserResponse = Prisma.UserResponseModel

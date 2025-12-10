@@ -228,6 +228,7 @@ export type JsonFormWhereInput = {
   createdAt?: Prisma.DateTimeFilter<"JsonForm"> | Date | string
   background?: Prisma.StringFilter<"JsonForm"> | string
   borderWidth?: Prisma.IntFilter<"JsonForm"> | number
+  responses?: Prisma.UserResponseListRelationFilter
 }
 
 export type JsonFormOrderByWithRelationInput = {
@@ -237,6 +238,7 @@ export type JsonFormOrderByWithRelationInput = {
   createdAt?: Prisma.SortOrder
   background?: Prisma.SortOrder
   borderWidth?: Prisma.SortOrder
+  responses?: Prisma.UserResponseOrderByRelationAggregateInput
 }
 
 export type JsonFormWhereUniqueInput = Prisma.AtLeast<{
@@ -249,6 +251,7 @@ export type JsonFormWhereUniqueInput = Prisma.AtLeast<{
   createdAt?: Prisma.DateTimeFilter<"JsonForm"> | Date | string
   background?: Prisma.StringFilter<"JsonForm"> | string
   borderWidth?: Prisma.IntFilter<"JsonForm"> | number
+  responses?: Prisma.UserResponseListRelationFilter
 }, "id">
 
 export type JsonFormOrderByWithAggregationInput = {
@@ -283,6 +286,7 @@ export type JsonFormCreateInput = {
   createdAt?: Date | string
   background?: string
   borderWidth?: number
+  responses?: Prisma.UserResponseCreateNestedManyWithoutFormInput
 }
 
 export type JsonFormUncheckedCreateInput = {
@@ -292,6 +296,7 @@ export type JsonFormUncheckedCreateInput = {
   createdAt?: Date | string
   background?: string
   borderWidth?: number
+  responses?: Prisma.UserResponseUncheckedCreateNestedManyWithoutFormInput
 }
 
 export type JsonFormUpdateInput = {
@@ -300,6 +305,7 @@ export type JsonFormUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   background?: Prisma.StringFieldUpdateOperationsInput | string
   borderWidth?: Prisma.IntFieldUpdateOperationsInput | number
+  responses?: Prisma.UserResponseUpdateManyWithoutFormNestedInput
 }
 
 export type JsonFormUncheckedUpdateInput = {
@@ -309,6 +315,7 @@ export type JsonFormUncheckedUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   background?: Prisma.StringFieldUpdateOperationsInput | string
   borderWidth?: Prisma.IntFieldUpdateOperationsInput | number
+  responses?: Prisma.UserResponseUncheckedUpdateManyWithoutFormNestedInput
 }
 
 export type JsonFormCreateManyInput = {
@@ -374,6 +381,18 @@ export type JsonFormSumOrderByAggregateInput = {
   borderWidth?: Prisma.SortOrder
 }
 
+export type JsonFormScalarRelationFilter =
+| Prisma.PatchUndefined<
+    Prisma.Either<Required<JsonFormScalarRelationFilterBase>, Exclude<keyof Required<JsonFormScalarRelationFilterBase>, 'path'>>,
+    Required<JsonFormScalarRelationFilterBase>
+  >
+| Prisma.OptionalFlat<Omit<Required<JsonFormScalarRelationFilterBase>, 'path'>>
+
+export type JsonFormScalarRelationFilterBase = {
+  is?: Prisma.JsonFormWhereInput
+  isNot?: Prisma.JsonFormWhereInput
+}
+
 export type StringFieldUpdateOperationsInput = {
   set?: string
 }
@@ -390,6 +409,99 @@ export type IntFieldUpdateOperationsInput = {
   divide?: number
 }
 
+export type JsonFormCreateNestedOneWithoutResponsesInput = {
+  create?: Prisma.XOR<Prisma.JsonFormCreateWithoutResponsesInput, Prisma.JsonFormUncheckedCreateWithoutResponsesInput>
+  connectOrCreate?: Prisma.JsonFormCreateOrConnectWithoutResponsesInput
+  connect?: Prisma.JsonFormWhereUniqueInput
+}
+
+export type JsonFormUpdateOneRequiredWithoutResponsesNestedInput = {
+  create?: Prisma.XOR<Prisma.JsonFormCreateWithoutResponsesInput, Prisma.JsonFormUncheckedCreateWithoutResponsesInput>
+  connectOrCreate?: Prisma.JsonFormCreateOrConnectWithoutResponsesInput
+  upsert?: Prisma.JsonFormUpsertWithoutResponsesInput
+  connect?: Prisma.JsonFormWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.JsonFormUpdateToOneWithWhereWithoutResponsesInput, Prisma.JsonFormUpdateWithoutResponsesInput>, Prisma.JsonFormUncheckedUpdateWithoutResponsesInput>
+}
+
+export type JsonFormCreateWithoutResponsesInput = {
+  jsonform: string
+  createdBy: string
+  createdAt?: Date | string
+  background?: string
+  borderWidth?: number
+}
+
+export type JsonFormUncheckedCreateWithoutResponsesInput = {
+  id?: number
+  jsonform: string
+  createdBy: string
+  createdAt?: Date | string
+  background?: string
+  borderWidth?: number
+}
+
+export type JsonFormCreateOrConnectWithoutResponsesInput = {
+  where: Prisma.JsonFormWhereUniqueInput
+  create: Prisma.XOR<Prisma.JsonFormCreateWithoutResponsesInput, Prisma.JsonFormUncheckedCreateWithoutResponsesInput>
+}
+
+export type JsonFormUpsertWithoutResponsesInput = {
+  update: Prisma.XOR<Prisma.JsonFormUpdateWithoutResponsesInput, Prisma.JsonFormUncheckedUpdateWithoutResponsesInput>
+  create: Prisma.XOR<Prisma.JsonFormCreateWithoutResponsesInput, Prisma.JsonFormUncheckedCreateWithoutResponsesInput>
+  where?: Prisma.JsonFormWhereInput
+}
+
+export type JsonFormUpdateToOneWithWhereWithoutResponsesInput = {
+  where?: Prisma.JsonFormWhereInput
+  data: Prisma.XOR<Prisma.JsonFormUpdateWithoutResponsesInput, Prisma.JsonFormUncheckedUpdateWithoutResponsesInput>
+}
+
+export type JsonFormUpdateWithoutResponsesInput = {
+  jsonform?: Prisma.StringFieldUpdateOperationsInput | string
+  createdBy?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  background?: Prisma.StringFieldUpdateOperationsInput | string
+  borderWidth?: Prisma.IntFieldUpdateOperationsInput | number
+}
+
+export type JsonFormUncheckedUpdateWithoutResponsesInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  jsonform?: Prisma.StringFieldUpdateOperationsInput | string
+  createdBy?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  background?: Prisma.StringFieldUpdateOperationsInput | string
+  borderWidth?: Prisma.IntFieldUpdateOperationsInput | number
+}
+
+
+/**
+ * Count Type JsonFormCountOutputType
+ */
+
+export type JsonFormCountOutputType = {
+  responses: number
+}
+
+export type JsonFormCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  responses?: boolean | JsonFormCountOutputTypeCountResponsesArgs
+}
+
+/**
+ * JsonFormCountOutputType without action
+ */
+export type JsonFormCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the JsonFormCountOutputType
+   */
+  select?: Prisma.JsonFormCountOutputTypeSelect<ExtArgs> | null
+}
+
+/**
+ * JsonFormCountOutputType without action
+ */
+export type JsonFormCountOutputTypeCountResponsesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.UserResponseWhereInput
+}
 
 
 export type JsonFormSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -399,6 +511,8 @@ export type JsonFormSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs
   createdAt?: boolean
   background?: boolean
   borderWidth?: boolean
+  responses?: boolean | Prisma.JsonForm$responsesArgs<ExtArgs>
+  _count?: boolean | Prisma.JsonFormCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["jsonForm"]>
 
 export type JsonFormSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -429,10 +543,18 @@ export type JsonFormSelectScalar = {
 }
 
 export type JsonFormOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "jsonform" | "createdBy" | "createdAt" | "background" | "borderWidth", ExtArgs["result"]["jsonForm"]>
+export type JsonFormInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  responses?: boolean | Prisma.JsonForm$responsesArgs<ExtArgs>
+  _count?: boolean | Prisma.JsonFormCountOutputTypeDefaultArgs<ExtArgs>
+}
+export type JsonFormIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
+export type JsonFormIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
 
 export type $JsonFormPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "JsonForm"
-  objects: {}
+  objects: {
+    responses: Prisma.$UserResponsePayload<ExtArgs>[]
+  }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
     jsonform: string
@@ -834,6 +956,7 @@ readonly fields: JsonFormFieldRefs;
  */
 export interface Prisma__JsonFormClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
+  responses<T extends Prisma.JsonForm$responsesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.JsonForm$responsesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$UserResponsePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -886,6 +1009,10 @@ export type JsonFormFindUniqueArgs<ExtArgs extends runtime.Types.Extensions.Inte
    */
   omit?: Prisma.JsonFormOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.JsonFormInclude<ExtArgs> | null
+  /**
    * Filter, which JsonForm to fetch.
    */
   where: Prisma.JsonFormWhereUniqueInput
@@ -904,6 +1031,10 @@ export type JsonFormFindUniqueOrThrowArgs<ExtArgs extends runtime.Types.Extensio
    */
   omit?: Prisma.JsonFormOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.JsonFormInclude<ExtArgs> | null
+  /**
    * Filter, which JsonForm to fetch.
    */
   where: Prisma.JsonFormWhereUniqueInput
@@ -921,6 +1052,10 @@ export type JsonFormFindFirstArgs<ExtArgs extends runtime.Types.Extensions.Inter
    * Omit specific fields from the JsonForm
    */
   omit?: Prisma.JsonFormOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.JsonFormInclude<ExtArgs> | null
   /**
    * Filter, which JsonForm to fetch.
    */
@@ -970,6 +1105,10 @@ export type JsonFormFindFirstOrThrowArgs<ExtArgs extends runtime.Types.Extension
    */
   omit?: Prisma.JsonFormOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.JsonFormInclude<ExtArgs> | null
+  /**
    * Filter, which JsonForm to fetch.
    */
   where?: Prisma.JsonFormWhereInput
@@ -1018,6 +1157,10 @@ export type JsonFormFindManyArgs<ExtArgs extends runtime.Types.Extensions.Intern
    */
   omit?: Prisma.JsonFormOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.JsonFormInclude<ExtArgs> | null
+  /**
    * Filter, which JsonForms to fetch.
    */
   where?: Prisma.JsonFormWhereInput
@@ -1060,6 +1203,10 @@ export type JsonFormCreateArgs<ExtArgs extends runtime.Types.Extensions.Internal
    * Omit specific fields from the JsonForm
    */
   omit?: Prisma.JsonFormOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.JsonFormInclude<ExtArgs> | null
   /**
    * The data needed to create a JsonForm.
    */
@@ -1108,6 +1255,10 @@ export type JsonFormUpdateArgs<ExtArgs extends runtime.Types.Extensions.Internal
    * Omit specific fields from the JsonForm
    */
   omit?: Prisma.JsonFormOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.JsonFormInclude<ExtArgs> | null
   /**
    * The data needed to update a JsonForm.
    */
@@ -1175,6 +1326,10 @@ export type JsonFormUpsertArgs<ExtArgs extends runtime.Types.Extensions.Internal
    */
   omit?: Prisma.JsonFormOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.JsonFormInclude<ExtArgs> | null
+  /**
    * The filter to search for the JsonForm to update in case it exists.
    */
   where: Prisma.JsonFormWhereUniqueInput
@@ -1201,6 +1356,10 @@ export type JsonFormDeleteArgs<ExtArgs extends runtime.Types.Extensions.Internal
    */
   omit?: Prisma.JsonFormOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.JsonFormInclude<ExtArgs> | null
+  /**
    * Filter which JsonForm to delete.
    */
   where: Prisma.JsonFormWhereUniqueInput
@@ -1221,6 +1380,30 @@ export type JsonFormDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Inte
 }
 
 /**
+ * JsonForm.responses
+ */
+export type JsonForm$responsesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the UserResponse
+   */
+  select?: Prisma.UserResponseSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the UserResponse
+   */
+  omit?: Prisma.UserResponseOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserResponseInclude<ExtArgs> | null
+  where?: Prisma.UserResponseWhereInput
+  orderBy?: Prisma.UserResponseOrderByWithRelationInput | Prisma.UserResponseOrderByWithRelationInput[]
+  cursor?: Prisma.UserResponseWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.UserResponseScalarFieldEnum | Prisma.UserResponseScalarFieldEnum[]
+}
+
+/**
  * JsonForm without action
  */
 export type JsonFormDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1232,4 +1415,8 @@ export type JsonFormDefaultArgs<ExtArgs extends runtime.Types.Extensions.Interna
    * Omit specific fields from the JsonForm
    */
   omit?: Prisma.JsonFormOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.JsonFormInclude<ExtArgs> | null
 }

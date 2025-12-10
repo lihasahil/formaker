@@ -51,7 +51,8 @@ export const AnyNull = runtime.AnyNull
 
 
 export const ModelName = {
-  JsonForm: 'JsonForm'
+  JsonForm: 'JsonForm',
+  UserResponse: 'UserResponse'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -80,6 +81,17 @@ export const JsonFormScalarFieldEnum = {
 } as const
 
 export type JsonFormScalarFieldEnum = (typeof JsonFormScalarFieldEnum)[keyof typeof JsonFormScalarFieldEnum]
+
+
+export const UserResponseScalarFieldEnum = {
+  id: 'id',
+  jsonResponse: 'jsonResponse',
+  createdBy: 'createdBy',
+  createdAt: 'createdAt',
+  formRef: 'formRef'
+} as const
+
+export type UserResponseScalarFieldEnum = (typeof UserResponseScalarFieldEnum)[keyof typeof UserResponseScalarFieldEnum]
 
 
 export const SortOrder = {

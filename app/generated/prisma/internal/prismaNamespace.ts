@@ -384,7 +384,8 @@ type FieldRefInputType<Model, FieldType> = Model extends never ? never : FieldRe
 
 
 export const ModelName = {
-  JsonForm: 'JsonForm'
+  JsonForm: 'JsonForm',
+  UserResponse: 'UserResponse'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -400,7 +401,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "jsonForm"
+    modelProps: "jsonForm" | "userResponse"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -478,6 +479,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    UserResponse: {
+      payload: Prisma.$UserResponsePayload<ExtArgs>
+      fields: Prisma.UserResponseFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.UserResponseFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserResponsePayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.UserResponseFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserResponsePayload>
+        }
+        findFirst: {
+          args: Prisma.UserResponseFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserResponsePayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.UserResponseFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserResponsePayload>
+        }
+        findMany: {
+          args: Prisma.UserResponseFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserResponsePayload>[]
+        }
+        create: {
+          args: Prisma.UserResponseCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserResponsePayload>
+        }
+        createMany: {
+          args: Prisma.UserResponseCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.UserResponseCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserResponsePayload>[]
+        }
+        delete: {
+          args: Prisma.UserResponseDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserResponsePayload>
+        }
+        update: {
+          args: Prisma.UserResponseUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserResponsePayload>
+        }
+        deleteMany: {
+          args: Prisma.UserResponseDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.UserResponseUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.UserResponseUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserResponsePayload>[]
+        }
+        upsert: {
+          args: Prisma.UserResponseUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserResponsePayload>
+        }
+        aggregate: {
+          args: Prisma.UserResponseAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateUserResponse>
+        }
+        groupBy: {
+          args: Prisma.UserResponseGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.UserResponseGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.UserResponseCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.UserResponseCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -527,6 +602,17 @@ export const JsonFormScalarFieldEnum = {
 } as const
 
 export type JsonFormScalarFieldEnum = (typeof JsonFormScalarFieldEnum)[keyof typeof JsonFormScalarFieldEnum]
+
+
+export const UserResponseScalarFieldEnum = {
+  id: 'id',
+  jsonResponse: 'jsonResponse',
+  createdBy: 'createdBy',
+  createdAt: 'createdAt',
+  formRef: 'formRef'
+} as const
+
+export type UserResponseScalarFieldEnum = (typeof UserResponseScalarFieldEnum)[keyof typeof UserResponseScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -702,6 +788,7 @@ export type PrismaClientOptions = ({
 }
 export type GlobalOmitConfig = {
   jsonForm?: Prisma.JsonFormOmit
+  userResponse?: Prisma.UserResponseOmit
 }
 
 /* Types for Logging */

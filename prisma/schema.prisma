@@ -14,4 +14,15 @@ model JsonForm {
   createdAt   DateTime @default(now())
   background  String   @default("#ffffff")
   borderWidth Int      @default(2)
+  responses   UserResponse[]
+}
+
+model UserResponse {
+  id           Int      @id @default(autoincrement())
+  jsonResponse String
+  createdBy    String   @default("anonymus")
+  createdAt    DateTime @default(now())
+   formRef      Int     
+
+  form         JsonForm @relation(fields: [formRef], references: [id] , onDelete: Cascade)
 }

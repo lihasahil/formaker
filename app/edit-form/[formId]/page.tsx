@@ -5,7 +5,7 @@ import { useUser } from "@clerk/nextjs";
 import { useState, useEffect } from "react";
 import { toast } from "sonner";
 
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, Eye, Share } from "lucide-react";
 import { Card } from "@/components/ui/card";
@@ -23,6 +23,8 @@ export default function EditFormPage() {
   const [loading, setLoading] = useState(false);
   const [selectedGradient, setSelectedGradient] = useState<string>("#ffffff");
   const [borderWidth, setBorderWidth] = useState<number>(2);
+
+  const router = useRouter();
 
   useEffect(() => {
     const fetchForm = async () => {
@@ -75,7 +77,11 @@ export default function EditFormPage() {
   return (
     <div className="text-black p-6">
       <div className="flex justify-between">
-        <Button variant="brutalDown" className="rounded-md bg-background  mb-4">
+        <Button
+          variant="brutalDown"
+          className="rounded-md bg-background  mb-4"
+          onClick={() => router.back()}
+        >
           <ChevronLeft />
           Back
         </Button>

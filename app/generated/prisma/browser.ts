@@ -22,3 +22,8 @@ export * from './enums';
  * 
  */
 export type JsonForm = Prisma.JsonFormModel
+/**
+ * Model UserResponse
+ * 
+ */
+export type UserResponse = Prisma.UserResponseModel
