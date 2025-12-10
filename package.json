@@ -31,6 +31,9 @@
     "swr": "^2.3.7",
     "tailwind-merge": "^3.4.0"
   },
+  "npmrc": {
+    "legacy-peer-deps": true
+  },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
