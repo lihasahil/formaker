@@ -98,8 +98,13 @@ export default function Responses() {
       </div>
     );
 
-  if (forms.length === 0)
-    return <div className="text-center mt-20 text-lg">No forms created</div>;
+  if (forms.length === 0) return;
+  <div className="p-10">
+    <h2 className="text-black flex justify-between font-bold text-2xl">
+      Response
+    </h2>
+    <div className="text-center mt-20 text-black text-lg">No forms created</div>
+  </div>;
 
   return (
     <div className="p-10">
