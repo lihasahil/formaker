@@ -8,7 +8,8 @@ export async function getFormsByCreator(createdBy: string) {
       where: { createdBy },
       orderBy: { createdAt: "desc" },
       include: {
-        responses: true,
+        _count: { select: { responses: true } },
+        responses: { orderBy: { createdAt: "asc" } },
       },
     });
 

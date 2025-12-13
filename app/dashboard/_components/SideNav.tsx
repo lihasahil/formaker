@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { LibraryBig, LineChart, MessageSquare, Shield } from "lucide-react";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect } from "react";
 
@@ -27,18 +28,35 @@ function SideNav() {
     <div className="h-screen  pt-20 rounded-md   border-l-0  border-4 border-black shadow-[5px_5px_0_#000]">
       <div className="flex flex-col gap-4 p-4">
         {menuList.map((menu) => (
-          <Button
-            key={menu.id}
-            variant="brutalDown"
-            className={`flex items-center gap-2 bg-background rounded-lg px-4 py-2 font-bold ${
-              path == menu.path && "bg-black text-white shadow-yellow-300"
-            }`}
-          >
-            <menu.icon className="w-5 h-5" />
-            {menu.name}
-          </Button>
+          <div key={menu.id} className="w-full flex flex-col gap-1">
+            {menu.id > 2 ? (
+              <Button
+                disabled
+                title="Comming Soon"
+                variant="brutalDown"
+                className="flex items-center gap-2 bg-background w-full rounded-lg px-4 py-2 font-bold cursor-not-allowed opacity-50"
+              >
+                <menu.icon className="w-5 h-5" />
+                {menu.name}
+              </Button>
+            ) : (
+              <Link href={menu.path} className="w-full">
+                <Button
+                  variant="brutalDown"
+                  className={`flex items-center gap-2 bg-background w-full rounded-lg px-4 py-2 font-bold ${
+                    path === menu.path &&
+                    "bg-black text-white shadow-yellow-300"
+                  }`}
+                >
+                  <menu.icon className="w-5 h-5" />
+                  {menu.name}
+                </Button>
+              </Link>
+            )}
+          </div>
         ))}
       </div>
+
       <div className="fixed bottom-5 p-4 w-64">
         <Button variant="brutalUp" className="w-full rounded-md">
           Create Form

@@ -116,7 +116,6 @@ export default function FormList() {
       {forms.map((form: Form) => {
         let parsedForm;
         try {
-          // Strip markdown code fences if present
           let cleanJson = form.jsonform.trim();
           if (cleanJson.startsWith("```json")) {
             cleanJson = cleanJson
@@ -140,14 +139,17 @@ export default function FormList() {
           <Card
             variant="shadow"
             key={form.id}
-            className="p-4 rounded-md bg-background"
+            className="p-4 rounded-md bg-background flex flex-col"
           >
-            <h2 className="text-xl font-bold">{formTitle}</h2>
-            <p className="text-gray-600 text-sm">{formSubtitle}</p>
-            <p className="text-gray-500 text-xs">
-              Created at: {new Date(form.createdAt).toLocaleString()}
-            </p>
-            <CardFooter className="flex gap-4 justify-between">
+            <div className="flex-1 space-y-4">
+              <h2 className="text-xl font-bold">{formTitle}</h2>
+              <p className="text-gray-600 text-sm">{formSubtitle}</p>
+              <p className="text-gray-500 text-xs">
+                Created at: {new Date(form.createdAt).toLocaleString()}
+              </p>
+            </div>
+
+            <CardFooter className="flex gap-4 justify-between items-center pt-4 px-0">
               <RWebShare
                 data={{
                   text: formTitle + " Made with Formaker",

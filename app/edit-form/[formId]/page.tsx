@@ -14,6 +14,7 @@ import { FormSchema } from "@/app/types/form-types";
 import { updateJsonForm } from "@/app/actions/update-form";
 import FormController from "../_components/controller";
 import Link from "next/link";
+import { RWebShare } from "react-web-share";
 
 export default function EditFormPage() {
   const params = useParams();
@@ -95,14 +96,24 @@ export default function EditFormPage() {
               Live Preview
             </Button>
           </Link>
-
-          <Button
-            variant="brutalDown"
-            className="rounded-md bg-background  mb-4"
+          <RWebShare
+            data={{
+              text:
+                formSchema?.formTitle ||
+                formSchema?.title + " Made with Formaker",
+              url: process.env.NEXT_PUBLIC_BASE_URL + "/aiform/" + formId,
+              title: formSchema?.formTitle || formSchema?.title,
+            }}
+            onClick={() => console.log("shared successfully!")}
           >
-            <Share />
-            Share
-          </Button>
+            <Button
+              variant="brutalDown"
+              className="rounded-md bg-background  mb-4"
+            >
+              <Share />
+              Share
+            </Button>
+          </RWebShare>
         </div>
       </div>
 
