@@ -12,12 +12,12 @@ function Header() {
 
   return (
     !path.includes("aiform") && (
-      <div className="p-5">
-        <div className="flex justify-between">
-          <div className="flex gap-2 items-center">
+      <header className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-gray-200 p-5">
+        <nav className="max-w-7xl mx-auto flex justify-between items-center">
+          <Link href="/" className="flex gap-2 items-center">
             <Image src="/logo/logo.svg" alt="Logo" width={60} height={10} />
             <span className="brutal-text text-black text-2xl">Formaker</span>
-          </div>
+          </Link>
           {isSignedIn ? (
             <div className="flex items-center justify-between gap-4">
               <Link href="/dashboard">
@@ -38,8 +38,8 @@ function Header() {
               </Button>
             </SignInButton>
           )}
-        </div>
-      </div>
+        </nav>
+      </header>
     )
   );
 }

@@ -2,11 +2,14 @@ import * as React from "react";
 import { cn } from "@/lib/utils";
 
 interface CardProps extends React.ComponentProps<"div"> {
-  variant?: "flat" | "shadow" | "hover";
+  variant?: "flat" | "shadow" | "hover" | "hover-down";
 }
 
 function Card({ className, variant = "flat", ...props }: CardProps) {
-  const variantClasses: Record<Exclude<CardProps["variant"], undefined>, string> = {
+  const variantClasses: Record<
+    Exclude<CardProps["variant"], undefined>,
+    string
+  > = {
     flat: "bg-yellow-200 text-black border-4 border-black rounded-none",
     shadow:
       "bg-yellow-200 text-black border-4 border-black rounded-none shadow-[6px_6px_0_#000]",
@@ -14,6 +17,11 @@ function Card({ className, variant = "flat", ...props }: CardProps) {
       "bg-yellow-200 text-black border-4 border-black rounded-none transition-transform " +
       "hover:shadow-[7px_7px_0_#000] hover:-translate-x-1 hover:-translate-y-1 " +
       "active:shadow-none active:translate-x-0 active:translate-y-0",
+    "hover-down":
+      "bg-yellow-200 text-black border-4 border-black rounded-none " +
+      "shadow-[7px_7px_0_#000] " +
+      "transition-[box-shadow,transform] duration-150 " +
+      "hover:shadow-none hover:translate-x-1 hover:translate-y-1",
   };
 
   return (
