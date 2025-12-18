@@ -88,7 +88,7 @@ function Features() {
             >
               <Card
                 variant="hover-down"
-                className="bg-background rounded-lg p-6 sm:p-8 transform transition-all duration-300 ease-out hover:scale-105 hover:shadow-lg h-full flex flex-col"
+                className="bg-background rounded-md p-6 sm:p-8 transform transition-all duration-300 h-full flex flex-col"
               >
                 <div className="flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-lg bg-gray-950 text-white transition-colors duration-300 mb-4 sm:mb-6 shrink-0">
                   {feature.icon}

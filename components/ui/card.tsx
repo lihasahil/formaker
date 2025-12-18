@@ -21,7 +21,7 @@ function Card({ className, variant = "flat", ...props }: CardProps) {
       "bg-yellow-200 text-black border-4 border-black rounded-none " +
       "shadow-[7px_7px_0_#000] " +
       "transition-[box-shadow,transform] duration-150 " +
-      "hover:shadow-none hover:translate-x-1 hover:translate-y-1",
+      "hover:shadow-[2px_2px_0_#000] hover:translate-x-1 hover:translate-y-1",
   };
 
   return (
