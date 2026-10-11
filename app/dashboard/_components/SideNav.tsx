@@ -6,6 +6,8 @@ import { LibraryBig, LineChart, MessageSquare, Shield } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect } from "react";
+import { OPEN_CREATE_EVENT } from "./CreateForm";
+import { useFormUsage } from "./FormUsageProvider";
 
 const menuList = [
   { id: 1, name: "My Forms", icon: LibraryBig, path: "/dashboard" },
@@ -21,6 +23,7 @@ const menuList = [
 
 export function MobileNav() {
   const path = usePathname();
+  const { openUpgrade } = useFormUsage();
 
   return (
     <nav className="md:hidden flex gap-3 overflow-x-auto px-4 py-3 border-b-2 border-black">
@@ -39,12 +42,21 @@ export function MobileNav() {
             </Button>
           </Link>
         ))}
+      <Button
+        variant="brutalDown"
+        onClick={() => openUpgrade()}
+        className="shrink-0 flex items-center gap-2 bg-background rounded-lg px-4 py-2 font-bold"
+      >
+        <Shield className="w-5 h-5" />
+        Upgrade
+      </Button>
     </nav>
   );
 }
 
 function SideNav() {
   const path = usePathname();
+  const { count, limit, openUpgrade } = useFormUsage();
 
   useEffect(() => {}, [path]);
 
@@ -53,7 +65,16 @@ function SideNav() {
       <div className="flex flex-col gap-4 p-4">
         {menuList.map((menu) => (
           <div key={menu.id} className="w-full flex flex-col gap-1">
-            {menu.id > 2 ? (
+            {menu.id === 4 ? (
+              <Button
+                variant="brutalDown"
+                onClick={() => openUpgrade()}
+                className="flex items-center gap-2 bg-background w-full rounded-lg px-4 py-2 font-bold"
+              >
+                <menu.icon className="w-5 h-5" />
+                {menu.name}
+              </Button>
+            ) : menu.id > 2 ? (
               <Button
                 disabled
                 title="Comming Soon"
@@ -82,17 +103,29 @@ function SideNav() {
       </div>
 
       <div className="fixed bottom-5 p-4 w-64">
-        <Button variant="brutalUp" className="w-full rounded-md">
+        <Button
+          variant="brutalUp"
+          className="w-full rounded-md"
+          onClick={() => window.dispatchEvent(new Event(OPEN_CREATE_EVENT))}
+        >
           Create Form
         </Button>
         <div className="my-7 text-center">
-          <Progress value={33} className="h-3 rounded-md" />
+          <Progress
+            value={((count ?? 0) / limit) * 100}
+            className="h-3 rounded-md"
+          />
           <h2 className="text-sm text-black mt-2">
-            <strong>2</strong> out of <strong>3</strong> Form Created
+            <strong>{count ?? "-"}</strong> out of <strong>{limit}</strong> Form
+            Created
           </h2>
-          <h2 className="text-xs text-black mt-2">
+          <button
+            type="button"
+            onClick={() => openUpgrade()}
+            className="text-xs text-black mt-2 underline cursor-pointer"
+          >
             Upgrade your plan for unlimited form creation
-          </h2>
+          </button>
         </div>
       </div>
     </div>

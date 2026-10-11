@@ -20,6 +20,7 @@ import {
 } from "@/components/ui/dialog";
 import { deleteForm } from "@/app/actions/delete-form";
 import { toast } from "sonner";
+import { useFormUsage } from "./FormUsageProvider";
 
 interface Form {
   id: number;
@@ -32,6 +33,7 @@ interface Form {
 
 export default function FormList() {
   const { user } = useUser();
+  const { refresh: refreshUsage } = useFormUsage();
   const createdBy = user?.primaryEmailAddress?.emailAddress;
   const [forms, setForms] = useState<Form[]>([]);
   const [loading, setLoading] = useState(true);
@@ -66,6 +68,7 @@ export default function FormList() {
 
     if (res.success) {
       setForms((prev) => prev.filter((f) => f.id !== id));
+      refreshUsage();
       toast.success("Form deleted successfully!");
     } else {
       toast.error(res.error);

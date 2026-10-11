@@ -17,6 +17,9 @@ import { useUser } from "@clerk/nextjs";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
+import { useFormUsage } from "./FormUsageProvider";
+
+export const OPEN_CREATE_EVENT = "open-create-form";
 
 const PROMPT =
   ",Based on descriptionprovide a JSON representation of a simple form containing multiple fields and form title and subtitle in compulsary based on description on any language. the form title and subtitle is compulsary. For each field, include the following details: name (the field’s identifier), label (the text label displayed to the user), placeholder (placeholder text if applicable), type (input type such as text, email, number, password, select, checkbox, radio, or textarea), required (true or false), options (an array of values and labels if the field is a select, checkbox, or radio). Generate at least five fields demonstrating a variety of input types including text, email, number, select, checkbox, radio, and textarea. Provide the output in a clean JSON format suitable for further processing or use in form generation.";
@@ -27,14 +30,34 @@ function CreateForm() {
   const { user } = useUser();
   const route = useRouter();
 
-  // Landing page links here with ?create=true to open the dialog right away
+  const { count, limitReached, openUpgrade } = useFormUsage();
+
+  const requestCreate = () => {
+    if (limitReached) {
+      openUpgrade("limit");
+    } else {
+      setOpenDialog(true);
+    }
+  };
+
+  // Landing page links here with ?create=true to open the dialog right away.
+  // Wait for the form count so the limit check is accurate.
   useEffect(() => {
+    if (count === null) return;
     const params = new URLSearchParams(window.location.search);
     if (params.get("create") === "true") {
-      setOpenDialog(true);
       window.history.replaceState(null, "", window.location.pathname);
+      if (limitReached) openUpgrade("limit");
+      else setOpenDialog(true);
     }
-  }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [count]);
+
+  // Sidebar "Create Form" button
+  useEffect(() => {
+    window.addEventListener(OPEN_CREATE_EVENT, requestCreate);
+    return () => window.removeEventListener(OPEN_CREATE_EVENT, requestCreate);
+  });
 
   const onCreateForm = async () => {
     if (!userInput.trim()) {
@@ -78,7 +101,7 @@ function CreateForm() {
   return (
     <div>
       <Button
-        onClick={() => setOpenDialog(true)}
+        onClick={requestCreate}
         variant="brutalUp"
         className="bg-background text-black rounded-md"
       >
