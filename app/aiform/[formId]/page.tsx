@@ -202,7 +202,7 @@ export default function LiveAiForm() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 p-6">
+    <div className="min-h-screen bg-gray-100 p-3 sm:p-6">
       <div className="flex items-center justify-center relative flex-col">
         {loading ? (
           <div className="fixed inset-0 flex flex-col items-center justify-center">

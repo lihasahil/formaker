@@ -98,17 +98,21 @@ export default function Responses() {
       </div>
     );
 
-  if (forms.length === 0) return;
-  <div className="p-10">
-    <h2 className="text-black flex justify-between font-bold text-2xl">
-      Response
-    </h2>
-    <div className="text-center mt-20 text-black text-lg">No forms created</div>
-  </div>;
+  if (forms.length === 0)
+    return (
+      <div className="p-4 sm:p-6 md:p-10">
+        <h2 className="text-black flex justify-between font-bold text-xl sm:text-2xl">
+          Response
+        </h2>
+        <div className="text-center mt-20 text-black text-lg">
+          No forms created
+        </div>
+      </div>
+    );
 
   return (
-    <div className="p-10">
-      <h2 className="text-black flex justify-between font-bold text-2xl">
+    <div className="p-4 sm:p-6 md:p-10">
+      <h2 className="text-black flex justify-between font-bold text-xl sm:text-2xl">
         Response
       </h2>
       <div className="pt-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -146,7 +150,7 @@ export default function Responses() {
                 <p className="text-gray-600 text-sm">{formSubtitle}</p>
               </div>
 
-              <CardFooter className="flex gap-4 justify-between items-center pt-4 px-0">
+              <CardFooter className="flex flex-wrap gap-4 justify-between items-center pt-4 px-0">
                 <p className="text-gray-500 text-sm">
                   Response Count: {form._count.responses}
                 </p>

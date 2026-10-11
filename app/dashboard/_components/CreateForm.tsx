@@ -15,7 +15,7 @@ import { Textarea } from "@/components/ui/textarea";
 
 import { useUser } from "@clerk/nextjs";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "sonner";
 
 const PROMPT =
@@ -26,6 +26,15 @@ function CreateForm() {
   const [loading, setLoading] = useState(false);
   const { user } = useUser();
   const route = useRouter();
+
+  // Landing page links here with ?create=true to open the dialog right away
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get("create") === "true") {
+      setOpenDialog(true);
+      window.history.replaceState(null, "", window.location.pathname);
+    }
+  }, []);
 
   const onCreateForm = async () => {
     if (!userInput.trim()) {

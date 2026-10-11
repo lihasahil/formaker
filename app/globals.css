@@ -44,6 +44,7 @@
 }
 
 :root {
+  --header-h: 80px;
   --radius: 0.625rem;
   --background: oklch(1 0 0);
   --foreground: oklch(1 0 0);
@@ -142,4 +143,10 @@
 .scrollbar-hide {
   -ms-overflow-style: none;
   scrollbar-width: none;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --header-h: 120px;
+  }
 }

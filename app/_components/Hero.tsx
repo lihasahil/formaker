@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import CreateFormButton from "./CreateFormButton";
 
 interface Avatar {
   initials: string;
@@ -17,7 +18,7 @@ const avatars: Avatar[] = [
 
 function Hero() {
   return (
-    <section className="bg-white pt-20 sm:pt-24 md:pt-24 min-h-screen flex items-center">
+    <section className="bg-white min-h-[calc(100vh-var(--header-h))] flex items-center">
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 py-16 sm:py-24 lg:py-32">
         <div className="mx-auto max-w-2xl text-center">
           <div className="relative mb-6 sm:mb-8">
@@ -46,19 +47,16 @@ function Hero() {
           </p>
 
           <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row justify-center gap-3 sm:gap-4">
-            <Button
-              variant="brutalDown"
-              className="rounded-md px-6 sm:px-8 py-2.5 sm:py-3 font-medium bg-background transition-colors text-sm sm:text-base"
-            >
-              Create Form
-            </Button>
+            <CreateFormButton />
 
-            <Button
-              variant="brutalDown"
-              className="rounded-md px-6 sm:px-8 py-2.5 sm:py-3 font-medium bg-foreground text-gray-700 transition-colors text-sm sm:text-base"
-            >
-              Learn More
-            </Button>
+            <a href="#features">
+              <Button
+                variant="brutalDown"
+                className="rounded-md px-6 sm:px-8 py-2.5 sm:py-3 font-medium bg-foreground text-gray-700 transition-colors text-sm sm:text-base"
+              >
+                Learn More
+              </Button>
+            </a>
           </div>
 
           {/* Trust Section */}

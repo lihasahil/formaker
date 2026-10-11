@@ -149,7 +149,7 @@ export default function FormList() {
               </p>
             </div>
 
-            <CardFooter className="flex gap-4 justify-between items-center pt-4 px-0">
+            <CardFooter className="flex flex-wrap gap-4 justify-between items-center pt-4 px-0">
               <RWebShare
                 data={{
                   text: formTitle + " Made with Formaker",

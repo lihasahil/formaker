@@ -64,7 +64,7 @@ const cardVariants = {
 
 function Features() {
   return (
-    <section className="py-12 sm:py-16 md:py-20 lg:py-24 bg-white">
+    <section id="features" className="py-12 sm:py-16 md:py-20 lg:py-24 bg-white">
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-3xl text-center mb-12 sm:mb-16 lg:mb-20">
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-black font-extrabold mb-4 sm:mb-6 leading-tight">

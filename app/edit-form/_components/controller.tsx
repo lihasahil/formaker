@@ -76,7 +76,7 @@ const FormController: React.FC<FormControllerProps> = ({
             <div
               key={idx}
               onClick={() => setSelectedGradient(grad)}
-              className={`w-20 h-12 rounded-md cursor-pointer border-black ${
+              className={`w-full h-12 rounded-md cursor-pointer border-black ${
                 selectedGradient === grad ? "border-4" : "border-2"
               }`}
               style={{ background: grad }}

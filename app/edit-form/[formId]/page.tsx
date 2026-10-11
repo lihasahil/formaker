@@ -76,8 +76,8 @@ export default function EditFormPage() {
   };
 
   return (
-    <div className="text-black p-6">
-      <div className="flex justify-between">
+    <div className="text-black p-4 sm:p-6">
+      <div className="flex flex-wrap justify-between gap-x-4">
         <Button
           variant="brutalDown"
           className="rounded-md bg-background  mb-4"
@@ -86,7 +86,7 @@ export default function EditFormPage() {
           <ChevronLeft />
           Back
         </Button>
-        <div className="flex items-center gap-4">
+        <div className="flex flex-wrap items-center gap-x-4">
           <Link href={"/aiform/" + formId} target="_blank">
             <Button
               variant="brutalDown"
@@ -117,7 +117,7 @@ export default function EditFormPage() {
         </div>
       </div>
 
-      <div className="grid grid-cols-3 gap-5">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
         {/* Controller */}
         <Card variant="shadow" className="rounded-md h-fit p-5 bg-background">
           <FormController
@@ -133,7 +133,7 @@ export default function EditFormPage() {
         {/* Form */}
         <Card
           variant="shadow"
-          className="md:col-span-2 rounded-md p-4 h-fit bg-background"
+          className="lg:col-span-2 rounded-md p-4 h-fit bg-background"
         >
           {loading ? (
             <div className="flex items-center justify-center h-full">

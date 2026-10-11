@@ -282,7 +282,7 @@ function FormUi({
   return (
     <>
       <div
-        className="w-full max-w-3xl border p-5 mx-auto"
+        className="w-full max-w-3xl border p-3 sm:p-5 mx-auto"
         style={{
           background,
           border: `${borderWidth}px solid #000000`,
